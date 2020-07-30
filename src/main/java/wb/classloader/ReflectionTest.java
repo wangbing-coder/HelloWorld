@@ -7,5 +7,7 @@ package wb.classloader;
 public class ReflectionTest {
     /**
      * 反射的特征：动态
+     *
+     * 反射更多体现在框架中
      */
 }
