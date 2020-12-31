@@ -11,6 +11,7 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
+import static java.util.stream.Collectors.collectingAndThen;
 import static java.util.stream.Collectors.toList;
 
 /**
@@ -61,9 +62,8 @@ public class LambdaTest {
         Supplier<Apple> sl = () -> new Apple("yellow",130);
 
         Apple apple1 = sl.get();
+
         System.out.println(apple1.getColor()+"==="+apple1.getWeight());
-
-
 
     }
 
@@ -123,5 +123,26 @@ public class LambdaTest {
         }
     }
 
+    /**
+     *
+     */
 
+    @Test
+    public void  invokeFun(){
+        boolean b = judgePre(new Apple("green", 300), color -> color.equals("green"));
+        System.out.println(b);
+    }
+
+
+    public static  boolean judgePre(Apple apple , Predicate predicate){
+       return predicate.test(apple.getColor());
+    }
+
+
+    @Test
+    public void testAccept(){
+        List<Apple> apples = Arrays.asList(new Apple("green", 160), new Apple("red", 150));
+
+        apples.stream().forEach(apple -> System.out.println(apple.getColor()));
+    }
 }
